@@ -1,0 +1,19 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Extensions","order":12,"path":"folders/Extensions.yy",},
+    {"name":"Objects","order":11,"path":"folders/Objects.yy",},
+    {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
+    {"name":"Zamzama","order":13,"path":"folders/Zamzama.yy",},
+    {"name":"Audio","order":4,"path":"folders/Zamzama/Audio.yy",},
+    {"name":"Editor","order":5,"path":"folders/Zamzama/Editor.yy",},
+    {"name":"Engine","order":1,"path":"folders/Zamzama/Engine.yy",},
+    {"name":"Graphics","order":2,"path":"folders/Zamzama/Graphics.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"ZamCart","order":1,"path":"scripts/ZamCart/ZamCart.yy",},
+    {"name":"ZamInput","order":2,"path":"scripts/ZamInput/ZamInput.yy",},
+    {"name":"ZamRenderer","order":1,"path":"scripts/ZamRenderer/ZamRenderer.yy",},
+    {"name":"ZamSandbox","order":3,"path":"scripts/ZamSandbox/ZamSandbox.yy",},
+    {"name":"Zamzama","order":3,"path":"scripts/Zamzama/Zamzama.yy",},
+  ],
+}

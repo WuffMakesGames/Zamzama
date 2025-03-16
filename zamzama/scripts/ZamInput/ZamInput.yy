@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamInput",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamInput",
+  "parent":{
+    "name":"Engine",
+    "path":"folders/Zamzama/Engine.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

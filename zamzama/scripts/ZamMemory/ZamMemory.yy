@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamMemory",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamMemory",
+  "parent":{
+    "name":"Engine",
+    "path":"folders/Zamzama/Engine.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

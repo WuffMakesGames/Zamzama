@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamSandbox",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamSandbox",
+  "parent":{
+    "name":"Engine",
+    "path":"folders/Zamzama/Engine.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
