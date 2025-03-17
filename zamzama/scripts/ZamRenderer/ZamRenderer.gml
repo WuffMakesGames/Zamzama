@@ -22,7 +22,7 @@ function ZamRenderer(zam) constructor {
 	/// @desc Builds a texture from the tile buffer
 	function build_tex() {
 		if (!surface_exists(tex_tiles_raw)) tex_tiles_raw = surface_create(16, 128, surface_r8unorm)
-		if (!surface_exists(tex_tiles)) tex_tiles = surface_create(64, 128)
+		if (!surface_exists(tex_tiles)) tex_tiles = surface_create(64, 256)
 		buffer_set_surface(parent.memory.memory, tex_tiles_raw, parent.memory.map.tiles.start)
 		
 		// Surface
@@ -85,6 +85,10 @@ function ZamRenderer(zam) constructor {
 				break
 			// Full Color Map ============================================================
 			case 2: 
+				
+				break
+			// High Tile Mode ============================================================
+			case 3: 
 				
 				break
 		}

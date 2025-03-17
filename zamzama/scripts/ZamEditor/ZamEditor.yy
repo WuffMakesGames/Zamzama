@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamEditor",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamEditor",
+  "parent":{
+    "name":"Editor",
+    "path":"folders/Zamzama/Editor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

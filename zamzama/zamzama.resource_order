@@ -14,6 +14,7 @@
     {"name":"meta_window","order":1,"path":"objects/meta_window/meta_window.yy",},
     {"name":"ZamCart","order":1,"path":"scripts/ZamCart/ZamCart.yy",},
     {"name":"ZamCLI","order":1,"path":"scripts/ZamCLI/ZamCLI.yy",},
+    {"name":"ZamEditor","order":2,"path":"scripts/ZamEditor/ZamEditor.yy",},
     {"name":"ZamInput","order":2,"path":"scripts/ZamInput/ZamInput.yy",},
     {"name":"ZamRenderer","order":1,"path":"scripts/ZamRenderer/ZamRenderer.yy",},
     {"name":"ZamSandbox","order":3,"path":"scripts/ZamSandbox/ZamSandbox.yy",},

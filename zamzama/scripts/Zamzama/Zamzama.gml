@@ -15,6 +15,7 @@ function Zamzama() constructor {
 	graphics	= new ZamGraphics(self)
 	renderer	= new ZamRenderer(self)
 	window		= new ZamWindow(self)
+	editor		= new ZamEditor(self)
 	
 	// Random spritesheet+map
 	for (var i = memory.map.tiles.start; i < memory.map.tiles.endof; i++) {
@@ -27,6 +28,10 @@ function Zamzama() constructor {
 	
 	// Methods ===================================
 	function update() {
+		
+		// Updates
+		if (cart.running) cart.process()
+		else editor.process()
 		
 		// Graphics
 		renderer.render()

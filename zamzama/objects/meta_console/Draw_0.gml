@@ -13,3 +13,4 @@ draw_clear(c_gray)
 CONSOLE.window.set_rectangle(
 	(width-screen_w)*0.5, (height-screen_h)*0.5, screen_w, screen_h)
 CONSOLE.draw()
+draw_surface(CONSOLE.renderer.tex_tiles,0,0)

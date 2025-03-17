@@ -33,6 +33,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"ZamCart","path":"scripts/ZamCart/ZamCart.yy",},},
     {"id":{"name":"ZamCLI","path":"scripts/ZamCLI/ZamCLI.yy",},},
+    {"id":{"name":"ZamEditor","path":"scripts/ZamEditor/ZamEditor.yy",},},
     {"id":{"name":"ZamGraphics","path":"scripts/ZamGraphics/ZamGraphics.yy",},},
     {"id":{"name":"ZamInput","path":"scripts/ZamInput/ZamInput.yy",},},
     {"id":{"name":"ZamMemory","path":"scripts/ZamMemory/ZamMemory.yy",},},
