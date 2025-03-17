@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamWindow",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamWindow",
+  "parent":{
+    "name":"Graphics",
+    "path":"folders/Zamzama/Graphics.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_zam_decoder",
+  "name":"shd_zam_decoder",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Zamzama/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

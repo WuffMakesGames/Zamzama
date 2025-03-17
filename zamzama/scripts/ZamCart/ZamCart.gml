@@ -3,6 +3,7 @@ function ZamCart(zam) constructor {
 	
 	// Variables =================================
 	
+	
 	// Methods ===================================
 	function load(filename) {
 		
