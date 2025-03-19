@@ -4,7 +4,7 @@
   "name":"shd_gmu_layer",
   "parent":{
     "name":"Shaders",
-    "path":"folders/GmUltra/Shaders.yy",
+    "path":"folders/Extensions/GmUltra/Shaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ZamAudio",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ZamAudio",
+  "parent":{
+    "name":"Engine",
+    "path":"folders/Zamzama/Zamzama/Engine.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

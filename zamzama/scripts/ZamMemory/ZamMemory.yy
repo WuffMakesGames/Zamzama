@@ -6,7 +6,7 @@
   "name":"ZamMemory",
   "parent":{
     "name":"Engine",
-    "path":"folders/Zamzama/Engine.yy",
+    "path":"folders/Zamzama/Zamzama/Engine.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

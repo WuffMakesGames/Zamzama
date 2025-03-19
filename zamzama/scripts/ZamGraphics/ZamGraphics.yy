@@ -6,7 +6,7 @@
   "name":"ZamGraphics",
   "parent":{
     "name":"Graphics",
-    "path":"folders/Zamzama/Graphics.yy",
+    "path":"folders/Zamzama/Zamzama/Graphics.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

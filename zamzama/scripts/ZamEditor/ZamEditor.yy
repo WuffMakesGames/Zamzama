@@ -6,7 +6,7 @@
   "name":"ZamEditor",
   "parent":{
     "name":"Editor",
-    "path":"folders/Zamzama/Editor.yy",
+    "path":"folders/Zamzama/Zamzama/Editor.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

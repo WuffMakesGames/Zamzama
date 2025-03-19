@@ -6,7 +6,7 @@
   "name":"Zamzama",
   "parent":{
     "name":"Zamzama",
-    "path":"folders/Zamzama.yy",
+    "path":"folders/Zamzama/Zamzama.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

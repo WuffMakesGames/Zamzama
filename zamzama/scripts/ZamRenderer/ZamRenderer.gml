@@ -115,7 +115,7 @@ function ZamRenderer(zam) constructor {
 		// Rendering
 		render_tiles()
 		//render_sprites()
-		draw_surface(surface_tiles,0,0)
+		//draw_surface(surface_tiles,0,0)
 		
 		// Finish
 		surface_reset_target()

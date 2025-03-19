@@ -25,5 +25,5 @@ void main()
 	int index = int(texture2D(texture, vec2(imageX, imageY)).r * 255.0);
 	int pal_id = int(pixel.g * 255.0);
     
-	gl_FragColor = vec4(float(index)/255.0, 0, 0, 1.0);
+	gl_FragColor = vec4(tile/255.0, 0, 0, 1.0);
 }

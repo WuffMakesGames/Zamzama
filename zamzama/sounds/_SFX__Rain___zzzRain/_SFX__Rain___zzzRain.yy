@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"_SFX__Rain___zzzRain",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.303333,
+  "name":"_SFX__Rain___zzzRain",
+  "parent":{
+    "name":"Samples",
+    "path":"folders/Zamzama/Samples.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"_SFX__Rain___zzzRain.wav",
+  "type":0,
+  "volume":1.0,
+}
