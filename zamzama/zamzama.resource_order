@@ -20,5 +20,6 @@
     {"name":"ZamSandbox","order":3,"path":"scripts/ZamSandbox/ZamSandbox.yy",},
     {"name":"ZamWindow","order":2,"path":"scripts/ZamWindow/ZamWindow.yy",},
     {"name":"Zamzama","order":3,"path":"scripts/Zamzama/Zamzama.yy",},
+    {"name":"shd_zam_tiles","order":1,"path":"shaders/shd_zam_tiles/shd_zam_tiles.yy",},
   ],
 }

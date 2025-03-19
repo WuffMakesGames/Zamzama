@@ -15,6 +15,9 @@ function ZamEditor(zam): ZamCart(zam) constructor {
 	// Process ===================================
 	function process() {
 		sprite.process()
+		
+		// Sprites
+		parent.graphics.blit(142, parent.input.get_mouse_x(), parent.input.get_mouse_y())
 	}
 	
 }

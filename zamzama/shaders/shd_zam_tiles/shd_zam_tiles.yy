@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_zam_tiles",
+  "name":"shd_zam_tiles",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Zamzama/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

@@ -43,6 +43,7 @@
     {"id":{"name":"ZamWindow","path":"scripts/ZamWindow/ZamWindow.yy",},},
     {"id":{"name":"Zamzama","path":"scripts/Zamzama/Zamzama.yy",},},
     {"id":{"name":"shd_zam_decoder","path":"shaders/shd_zam_decoder/shd_zam_decoder.yy",},},
+    {"id":{"name":"shd_zam_tiles","path":"shaders/shd_zam_tiles/shd_zam_tiles.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

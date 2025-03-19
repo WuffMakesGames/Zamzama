@@ -21,9 +21,9 @@ function ZamRenderer(zam) constructor {
 	
 	/// @desc Builds a texture from the tile buffer
 	function build_tex() {
-		if (!surface_exists(tex_tiles_raw)) tex_tiles_raw = surface_create(16, 128, surface_r8unorm)
+		if (!surface_exists(tex_tiles_raw)) tex_tiles_raw = surface_create(16, 256, surface_r8unorm)
 		if (!surface_exists(tex_tiles)) tex_tiles = surface_create(64, 256)
-		buffer_set_surface(parent.memory.memory, tex_tiles_raw, parent.memory.map.tiles.start)
+		buffer_set_surface(parent.memory.memory, tex_tiles_raw, parent.memory.map.tiles.start*8)
 		
 		// Surface
 		surface_set_target(tex_tiles)
@@ -31,7 +31,7 @@ function ZamRenderer(zam) constructor {
 		
 		// Render full tiles
 		shader_set(shd_zam_decoder)
-		shader_set_uniform_f(shader_get_uniform(shd_zam_decoder, "textureSize"), 64, 128)
+		shader_set_uniform_f(shader_get_uniform(shd_zam_decoder, "textureSize"), 64, 256)
 		draw_surface_ext(tex_tiles_raw, 0,0, 4,1, 0, c_white, 1)
 		shader_reset()
 		
@@ -52,20 +52,18 @@ function ZamRenderer(zam) constructor {
 		// Draw tiles
 		var memory = parent.memory
 		var map = memory.map
-		
 		var map_mode = memory.peek_ext(map.map_mode.start, 2)
-		var map_length = map.map_tiles.length + map.map_extra.length
 		
 		var pan_x = memory.peek(map.pan_x.start)
 		var pan_y = memory.peek(map.pan_y.start)
 		
-		var i, byte, left, top, px, py
-		
+		var byte, left, top, px, py
 		switch (map_mode) {
 			// Horizontal Map ============================================================
 			case 0:
-				for (i = 0; i < map_length/8; i++) {
-					byte = memory.peek(map.map_tiles.start + i*8)
+				var map_length = map.map_tiles.length + map.map_extra.length
+				for (var i = 0; i < map_length; i++) {
+					byte = memory.peek(map.map_tiles.start + i) % 128
 					if (byte != 0) {
 						left = (byte%8)*8
 						top = floor(byte/8)*8
@@ -89,11 +87,31 @@ function ZamRenderer(zam) constructor {
 				break
 			// High Tile Mode ============================================================
 			case 3: 
-				
+				var map_length = map.map_tiles.length
+				for (var i = 0; i < map_length; i++) {
+					byte = memory.peek(map.map_tiles.start + i)
+					if (byte != 0) {
+						left = (byte%8)*8
+						top = floor(byte/8)*8
+						px = (i%16)*8 - pan_x%8
+						py = floor(i/16)*8 - pan_y%8
+						
+						draw_surface_part(tex_tiles, left, top, 8, 8, px, py)
+						draw_surface_part(tex_tiles, left, top, 8, 8, px+128, py)
+						draw_surface_part(tex_tiles, left, top, 8, 8, px, py+128)
+						draw_surface_part(tex_tiles, left, top, 8, 8, px+128, py+128)
+					}
+				}
 				break
 		}
 		
 		// Draw sprites
+		for (var i = 0; i < 16; i++) {
+			var index = parent.memory.peek(parent.memory.map.sprites.start + i*4)
+			var pos_x = parent.memory.peek(parent.memory.map.sprites.start + i*4+1)
+			var pos_y = parent.memory.peek(parent.memory.map.sprites.start + i*4+2)
+			draw_surface_part(tex_tiles, (index%8)*8, floor(index/8)*8, 8,8, pos_x, pos_y)
+		}
 		
 		// Finish
 		surface_reset_target()
