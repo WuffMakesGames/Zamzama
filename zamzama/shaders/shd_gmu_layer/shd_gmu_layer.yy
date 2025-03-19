@@ -1,10 +1,10 @@
 {
   "$GMShader":"",
-  "%Name":"shd_zam_decoder",
-  "name":"shd_zam_decoder",
+  "%Name":"shd_gmu_layer",
+  "name":"shd_gmu_layer",
   "parent":{
     "name":"Shaders",
-    "path":"folders/Zamzama/Shaders.yy",
+    "path":"folders/GmUltra/Shaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

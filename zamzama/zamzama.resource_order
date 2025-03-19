@@ -1,6 +1,8 @@
 {
   "FolderOrderSettings":[
     {"name":"Extensions","order":12,"path":"folders/Extensions.yy",},
+    {"name":"GmUltra","order":14,"path":"folders/GmUltra.yy",},
+    {"name":"Shaders","order":1,"path":"folders/GmUltra/Shaders.yy",},
     {"name":"Objects","order":11,"path":"folders/Objects.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
     {"name":"Zamzama","order":13,"path":"folders/Zamzama.yy",},
@@ -8,6 +10,7 @@
     {"name":"Editor","order":5,"path":"folders/Zamzama/Editor.yy",},
     {"name":"Engine","order":1,"path":"folders/Zamzama/Engine.yy",},
     {"name":"Graphics","order":2,"path":"folders/Zamzama/Graphics.yy",},
+    {"name":"Helpers","order":7,"path":"folders/Zamzama/Helpers.yy",},
     {"name":"Shaders","order":6,"path":"folders/Zamzama/Shaders.yy",},
   ],
   "ResourceOrderSettings":[

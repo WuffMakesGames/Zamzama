@@ -10,7 +10,7 @@ var screen_h = ZAMZAMA_RES_Y*scale
 
 // Console
 draw_clear(c_gray)
+draw_surface(CONSOLE.renderer.tex_tiles, 0, 0)
 CONSOLE.window.set_rectangle(
 	(width-screen_w)*0.5, (height-screen_h)*0.5, screen_w, screen_h)
 CONSOLE.draw()
-draw_surface(CONSOLE.renderer.tex_tiles,0,0)

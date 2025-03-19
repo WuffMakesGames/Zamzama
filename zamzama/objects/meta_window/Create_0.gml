@@ -1,6 +1,6 @@
 /// @description 
 
-window_set_cursor(cr_none)
+//window_set_cursor(cr_none)
 
 // Enable camera
 view_enabled = true

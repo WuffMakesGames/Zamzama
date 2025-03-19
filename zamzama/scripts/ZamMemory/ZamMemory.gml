@@ -14,8 +14,8 @@ function ZamMemory(zam) constructor {
 	// Assign
 	map = { length: 0 }
 	
-	map.tiles		= memmap_assign(2048)	// 128 8x8 tiles, 2bpp
-	map.tiles_ext	= memmap_assign(2048)	// 128 8x8 tiles, 2bpp
+	map.tiles		= memmap_assign(8192)	// 128 8x8 tiles, 2bpp
+	map.tiles_ext	= memmap_assign(8192)	// 128 8x8 tiles, 2bpp
 	map.palettes	= memmap_assign(32)		// 8 palettes, 4 colors per palette. 00000xxx 5 bits used, 3 unused
 	
 	map.map_tiles	= memmap_assign(256)	// 7 bits per tile, 1 bit transparency

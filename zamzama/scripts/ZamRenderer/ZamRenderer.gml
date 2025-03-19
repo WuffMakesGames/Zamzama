@@ -13,30 +13,93 @@ function ZamRenderer(zam) constructor {
 		#d95763, #d77bba, #8f974a ,#8a6f30
 	]
 	
-	tex_tiles_raw = -1
+	// Surfaces
 	tex_tiles = -1
+	surface_tiles = -1
 	surface = -1
+	
+	// Shader pal
+	palette_ext = []
+	for (var i = 0; i < 32; i++) {
+		var col = palette[i]
+		array_push(palette_ext, color_get_red(col), color_get_green(col), color_get_blue(col))
+	}
 	
 	// Methods ===================================
 	
 	/// @desc Builds a texture from the tile buffer
 	function build_tex() {
-		if (!surface_exists(tex_tiles_raw)) tex_tiles_raw = surface_create(16, 256, surface_r8unorm)
-		if (!surface_exists(tex_tiles)) tex_tiles = surface_create(64, 256)
-		buffer_set_surface(parent.memory.memory, tex_tiles_raw, parent.memory.map.tiles.start*8)
+		tex_tiles = fix_surface(tex_tiles, 64, 256, surface_r8unorm)
+		buffer_set_surface(parent.memory.memory, tex_tiles, parent.memory.map.tiles.start)
+	}
+	
+	/// @desc Renders the tilemap to the screen
+	function render_tiles() {
+		var memory = parent.memory
+		var map = memory.map
+		
+		var map_mode = memory.peek_ext(map.map_mode.start, 2)
+		var pan_x = memory.peek(map.pan_x.start)
+		var pan_y = memory.peek(map.pan_y.start)
+		
+		var map_width = map_mode == 0 ? 24 : 16
+		var map_height = map_mode == 1 ? 24 : 16
 		
 		// Surface
-		surface_set_target(tex_tiles)
-		draw_clear(c_black)
+		surface_tiles = fix_surface(surface_tiles, map_width, map_height, surface_r8unorm)
+		buffer_set_surface(memory.memory, surface_tiles, map.map_tiles.start)
 		
-		// Render full tiles
-		shader_set(shd_zam_decoder)
-		shader_set_uniform_f(shader_get_uniform(shd_zam_decoder, "textureSize"), 64, 256)
-		draw_surface_ext(tex_tiles_raw, 0,0, 4,1, 0, c_white, 1)
+		// Shader
+		shader_set(shd_zam_tiles)
+		
+		shader_set_uniform_f_array(get_uniform("palette"), palette_ext)
+		//shader_set_uniform_f_array(get_uniform("palettes"), [0])
+		
+		texture_set_stage(get_uniform("texture"), surface_get_texture(tex_tiles))
+		shader_set_uniform_f(get_uniform("textureSize"), 64, 256)
+		shader_set_uniform_f(get_uniform("tilemapSize"), map_width, map_height)
+		shader_set_uniform_f(get_uniform("offset"), pan_x, pan_y)
+		
+		shader_set_uniform_f(get_uniform("tileSize"), 8, 8)
+		
+		// Draw tiles
+		switch (map_mode) {
+			// Horizontal Map ============================================================
+			case 0:
+				for (var i = 0; i < 8; i++) {
+					draw_surface_part_ext(surface_tiles, 0,i*8, 192,8, 0,0,8,8, c_white, 1)
+				}
+				break
+			// Vertical Map ==============================================================
+			case 1: 
+				
+				break
+			// Full Color Map ============================================================
+			case 2: 
+				
+				break
+			// High Tile Mode ============================================================
+			case 3:
+				draw_surface_ext(surface_tiles, 0, 0, 8, 8, 0, c_white, 1)
+				break
+		}
+		
+		// Cleanup
 		shader_reset()
+	}
+	
+	/// @desc Renders sprites to the screen
+	function render_sprites() {
 		
-		// Finish
-		surface_reset_target()
+		// Sprites
+		for (var i = 0; i < 16; i++) {
+			var index = parent.memory.peek(parent.memory.map.sprites.start + i*4)
+			var pos_x = parent.memory.peek(parent.memory.map.sprites.start + i*4+1)
+			var pos_y = parent.memory.peek(parent.memory.map.sprites.start + i*4+2)
+			draw_surface_part(tex_tiles, (index%8)*8, floor(index/8)*8, 8,8, pos_x, pos_y)
+		}
+		
+		// Cleanup
 		
 	}
 	
@@ -49,69 +112,10 @@ function ZamRenderer(zam) constructor {
 		surface_set_target(surface)
 		draw_clear(c_black)
 		
-		// Draw tiles
-		var memory = parent.memory
-		var map = memory.map
-		var map_mode = memory.peek_ext(map.map_mode.start, 2)
-		
-		var pan_x = memory.peek(map.pan_x.start)
-		var pan_y = memory.peek(map.pan_y.start)
-		
-		var byte, left, top, px, py
-		switch (map_mode) {
-			// Horizontal Map ============================================================
-			case 0:
-				var map_length = map.map_tiles.length + map.map_extra.length
-				for (var i = 0; i < map_length; i++) {
-					byte = memory.peek(map.map_tiles.start + i) % 128
-					if (byte != 0) {
-						left = (byte%8)*8
-						top = floor(byte/8)*8
-						px = (i%24)*8 - pan_x
-						py = floor(i/24)*8 - pan_y%128
-						
-						draw_surface_part(tex_tiles, left, top, 8, 8, px, py)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px+256, py)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px, py+128)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px+256, py+128)
-					}
-				}
-				break
-			// Vertical Map ==============================================================
-			case 1: 
-				
-				break
-			// Full Color Map ============================================================
-			case 2: 
-				
-				break
-			// High Tile Mode ============================================================
-			case 3: 
-				var map_length = map.map_tiles.length
-				for (var i = 0; i < map_length; i++) {
-					byte = memory.peek(map.map_tiles.start + i)
-					if (byte != 0) {
-						left = (byte%8)*8
-						top = floor(byte/8)*8
-						px = (i%16)*8 - pan_x%8
-						py = floor(i/16)*8 - pan_y%8
-						
-						draw_surface_part(tex_tiles, left, top, 8, 8, px, py)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px+128, py)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px, py+128)
-						draw_surface_part(tex_tiles, left, top, 8, 8, px+128, py+128)
-					}
-				}
-				break
-		}
-		
-		// Draw sprites
-		for (var i = 0; i < 16; i++) {
-			var index = parent.memory.peek(parent.memory.map.sprites.start + i*4)
-			var pos_x = parent.memory.peek(parent.memory.map.sprites.start + i*4+1)
-			var pos_y = parent.memory.peek(parent.memory.map.sprites.start + i*4+2)
-			draw_surface_part(tex_tiles, (index%8)*8, floor(index/8)*8, 8,8, pos_x, pos_y)
-		}
+		// Rendering
+		render_tiles()
+		//render_sprites()
+		draw_surface(surface_tiles,0,0)
 		
 		// Finish
 		surface_reset_target()

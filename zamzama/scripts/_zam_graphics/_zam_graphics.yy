@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_zam_graphics",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_zam_graphics",
+  "parent":{
+    "name":"Helpers",
+    "path":"folders/Zamzama/Helpers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

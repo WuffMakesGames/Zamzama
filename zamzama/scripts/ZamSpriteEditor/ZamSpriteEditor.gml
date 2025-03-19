@@ -1,9 +1,9 @@
 function ZamSpriteEditor(zam): ZamCart(zam) constructor {
 	
 	// Variables =================================
+	tool_selected = ZAM_TOOL.pencil
 	palette_selected = 0
 	tile_selected = 142
-	tool_selected = 0
 	
 	drawing = false
 	color_selected = 0
@@ -60,12 +60,12 @@ function ZamSpriteEditor(zam): ZamCart(zam) constructor {
 	function update_tiles() {
 		
 		// Set canvas tiles
-		if (surface_exists(parent.renderer.tex_tiles)) {
-			for (var i = 0; i < 64; i++) {
-				var color = surface_getpixel(parent.renderer.tex_tiles, (tile_selected%8)*8 + i%8, floor(tile_selected/8)*8 + floor(i/8))
-				parent.graphics.tile(i%8, 1+i/8, 128 + (color_get_red(color)/256)*4)
-			}
-		}
+		//if (surface_exists(parent.renderer.tex_tiles)) {
+		//	for (var i = 0; i < 64; i++) {
+				//var color = surface_getpixel(parent.renderer.tex_tiles, (tile_selected%8)*8 + i%8, floor(tile_selected/8)*8 + floor(i/8))
+				//parent.graphics.tile(i%8, 1+i/8, 128 + (color_get_red(color)/256)*4)
+		//	}
+		//}
 		
 		// Update sprite tiles
 		for (var i = 0; i < 128; i++) {
